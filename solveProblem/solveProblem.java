@@ -218,14 +218,67 @@ public class solveProblem {
                 }
             }
             if (!chk) System.out.println(arr[i]+" ");
-                
-            
-
         }
     }
+    public static void symmetRicPair(int arr[][]){
+        for(int i=0; i<arr.length; i++){
+            for(int j=i+1; j<arr.length; j++){
+                if (arr[j][0]==arr[i][1] && arr[j][1]==arr[i][0]) {
+                    System.out.print("("+arr[i][1]+","+ arr[i][0]+")");
+                    break;
+                }
+            }
+        }
+    }
+    public static int product(int arr[]){
+        int prod = 1;
+        for(int i =1; i<arr.length; i++){
+            prod*=i;
+        }
+        return prod;
+    }
+    public static void printFreq(int arr[]){
+        for(int i= 0; i<arr.length;  i++){
+            int x = arr[i];
+            int count = 0;
+            if (x==-1) continue;
+            for(int j= 0; j<arr.length; j++){
+                if (arr[j]==x) {
+                    count++;
+                    arr[j]=-1;
+
+                    
+                }
+            }
+            System.out.println("frequncy of "+x +" is "+ count);
+        }
+    }
+
+    public static int findEquilibrium(int arr[]){
+        int totsum = 0;
+        for(int i=0; i<arr.length; i++){
+            totsum+=arr[i];
+        }
+        int leftsum = 0, rightsum =totsum;
+        for(int i =0;i<arr.length; i++){
+            rightsum-=arr[i];
+            if (leftsum==rightsum) {
+                return i;
+        }
+            
+        leftsum+=arr[i];
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
-        int arr[] = {1,1,2,2,3,3,4,5};
-        findNonRepeat(arr);
+            int arr[] = {2, 3, -1, 8, 4};
+       System.out.println(findEquilibrium(arr));
+        // int arr[] = {1,2,3,2,3,1,3,5,6};
+        // printFreq(arr);
+    //  System.out.println(product(arr));
+      //symmetRicPair(arr);
+       // findNonRepeat(arr);
         //repeatElement(arr);
         // int key = 6;
         // int pos = 4; 
