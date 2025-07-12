@@ -271,9 +271,117 @@ public class solveProblem {
         return -1;
     }
 
+    public static boolean arraySubset(int arr1[], int arr2[], int m, int n){
+        if (m>n) {
+            return false;
+            
+        }
+        for(int i =0;i<arr1.length; i++){
+            boolean present = false;
+            for(int j=0; j<arr2.length; j++){
+                if (arr2[j]==arr1[i]) {
+                    present = true;
+                    break;
+                }
+            }
+            if (present==false) return false;
+        }
+        return true;
+    }
+
+    //Problems on Numbers
+
+   public static boolean checkPallindrone(int n){
+   int m =n;
+    int rev= 0;
+    while (n>0) {
+        int lastdigit = n%10;
+        rev = (rev*10)+lastdigit;
+        n= n/10;
+        
+    }
+    if (m==rev) {
+        return true;
+        
+    }else{
+        return false;
+    }
+
+   }
+
+
+   public static boolean checkPrime(int n){
+    int count = 0;
+    for(int i=1; i<=Math.sqrt(n); i++){
+         if (n%i==0) {
+            count++;
+         
+         if (n/i!=i) {
+            count++;
+         } 
+         }
+    }
+    if (count==2) {
+        return true;
+    }else{
+        return false;
+    }
+   
+    }
+   public static void perfectNumber(int n){
+  int sum =0;
+  int m =n;
+  for(int i=1; i<n; i++){
+    if (n%i==0) {
+      sum+=i;
+    }
+  }
+  if(sum==m){
+    System.out.println("the number is perfect");
+  }else{
+    System.out.println("sorry this is not the perfect number");
+  }
+  
+}
+public static void evenOrOdd(int n){
+        if (n%2==0) {
+            System.out.print("The number is even");
+        }else{
+            System.out.print("The Number Is odd");
+        }
+    }
+
     public static void main(String[] args) {
-            int arr[] = {2, 3, -1, 8, 4};
-       System.out.println(findEquilibrium(arr));
+      int n=15;
+      evenOrOdd(n);
+      perfectNumber(n);
+        // int min = 10;
+        // int max = 20;
+        // for(int i= min; i<max; i++){
+        //     if (checkPrime(i)) {
+        //         System.out.print(i+" ");
+                
+        //     }
+        // }
+       // System.out.println(checkPrime(n));
+        //  int min = 10;
+        //  int max= 100;
+        //  for(int i = min; i<max; i++){
+        //     if (checkPallindrone(i)) {
+        //         System.out.print(i+" ");
+        //     }
+        //  }
+            // int arr1[]={1,3,4,5,2};
+	        // int arr2[]={2,4,3,1,7,5,15};
+            // int m = arr1.length;
+            // int n = arr2.length;
+            // boolean ans = arraySubset(arr1, arr2, m, n);
+            // if (ans==true) {
+            //     System.out.println("arry is subset of another array");
+                
+            // }else{
+            //     System.out.println("array is not subset of another array");
+            // }
         // int arr[] = {1,2,3,2,3,1,3,5,6};
         // printFreq(arr);
     //  System.out.println(product(arr));
