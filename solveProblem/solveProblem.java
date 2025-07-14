@@ -566,9 +566,112 @@ public class solveProblem {
         }
     }
 
+    public static int suminRange(int a,int b){
+        int sum =0;
+        for(int i=a; i<=b; i++){
+            sum+=i;
+        }
+           return sum;
+    }
+
+   public static int gcdd(int a, int b){
+    if (b==0) {
+        return a;
+    }
+    return gcdd(b, a%b);
+   }
+
+   public static void simple(int num3,int den3){
+     int gcd = gcdd(num3, den3);
+     num3/=gcd;
+     den3/=gcd;
+   }
+   
+   public static int replaceWithXero(int n){
+    if (n==0) {
+        return 1;
+    }
+    int ans = 0, temp = 1;
+    while (n>0) {
+        int lastdigit = n%10;
+       if (lastdigit==0) {
+        lastdigit = 1;
+       }
+       ans = lastdigit*temp+ans;
+        n=n/10;
+        temp = temp*10;
+    }
+    return ans;
+   }
+
+   public static void givenNumberIsPrime(int n){
+    int sum = 0;
+    for(int i= 0; i<=n; i++){
+        if (checkPrime(i)) {
+            System.out.println(i);
+           sum+=i;
+          
+        }  
+        }
+    }
+   
+    public static void bubbleSort(int arr[]){
+        for(int turn=0; turn<arr.length-1; turn++){
+            for(int j=0; j<arr.length-1-turn; j++){
+              if (arr[j]>arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                
+              }
+            }
+        }
+    }
+
+    public static void selectioSort(int arr[]){
+        for(int i=0; i<arr.length; i++){
+            int minpos = i;
+            for(int j =i+1; j<arr.length; j++){
+                if (arr[minpos]>arr[j]) {
+                    minpos= j;
+                }
+            }
+            
+            int temp = arr[minpos];
+            arr[minpos] = arr[i];
+            arr[i] = temp;
+        }
+    }
+    
+    public static void insertionSort(int arr[]){
+        for(int i=0; i<arr.length; i++){
+            int curr = i;
+            int prev = i - 1;
+            while (prev>=0 && arr[prev]>arr[curr]) {
+                arr[prev+1] = arr[prev];
+                prev--;
+            }
+            arr[prev+1] = arr[curr];
+        }
+    }
     public static void main(String[] args) {
-        int n = 378;
-        harshadNumber(n);
+        int arr[] = {13,46,24,52,20,9};
+        insertionSort(arr);
+       // selectioSort(arr);
+        for(int i =0; i<arr.length; i++){
+            System.out.print(arr[i]+" ");
+        }
+        // int n = 74;
+        // givenNumberIsPrime(n);
+    //     int num1 = 5, den1 = 2, num2 = 1, den2  = 2, num3, den3;
+       
+    //    int lcm = (den1*den2)/gcdd(den1, den2);
+    //    den3 =lcm;
+    //    num3 = num1*(den3/den1) + num2*(den3/den2);
+    //    System.out.println(num3+"/"+den3);
+        // int a = 5;
+        // int b= 9;
+        // System.out.println(suminRange(a, b));
         // int a = 20;
         // int b = 15;
         // int ans = gcd(a, b);
