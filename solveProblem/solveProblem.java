@@ -654,13 +654,188 @@ public class solveProblem {
             arr[prev+1] = arr[curr];
         }
     }
-    public static void main(String[] args) {
-        int arr[] = {13,46,24,52,20,9};
-        insertionSort(arr);
-       // selectioSort(arr);
-        for(int i =0; i<arr.length; i++){
-            System.out.print(arr[i]+" ");
+
+    public static void quickSort(int arr[], int si, int ei){
+        if(si>=ei){
+         return;
         }
+        int pidx = partition(arr, si, ei);
+        quickSort(arr, si, pidx-1);
+        quickSort(arr, pidx+1, ei);
+
+    }
+    public static int partition(int arr[], int si, int ei){
+        int pivot = arr[ei];
+        int i = si-1; // to make place
+        for(int j = si;  j<ei; j++){
+            if (arr[j]<=pivot) {
+                i++;
+                 int temp = arr[j];
+                 arr[j] = arr[i];
+                 arr[i] = temp;
+            }
+        }
+        i++;
+        int temp = pivot;
+        arr[ei] = arr[i];
+        arr[i] = temp;
+        return i;
+    }
+
+    public static void mergeSort(int arr[], int si, int ei){
+       if (si>=ei) {
+        return;
+        
+       }
+        int mid = si+(ei-si)/2;
+        mergeSort(arr, si, mid);
+        mergeSort(arr, mid+1, ei);
+        merge(arr, mid, si, ei);
+    }
+    
+    public static void merge(int arr[], int mid,int si, int ei){
+        int temp[] = new int[ei-si+1];
+        int  i =si;
+        int j = mid+1;
+        int k = 0;
+        while (i<=mid && j<=ei) {
+            if (arr[i]<arr[j]) {
+                temp[k]  = arr[i];
+                i++;
+              
+
+            }else{
+                temp[k] = arr[j];
+                j++;
+                
+            }
+            k++;
+            
+        }
+        while (i<=mid) {
+            temp[k++] =arr[i++];
+        }
+        while (j<=ei) {
+            temp[k++] = arr[j++];
+        }
+      for( k = 0,  i =si;  k<temp.length; k++, i++){
+       arr[i] = temp[k];
+      }
+    }
+    public static void  twoSum(int arr[], int target){
+        for(int i =0; i<arr.length; i++){
+            for(int j= i+1; j<arr.length; j++){
+                if (arr[i]+arr[j]==target) {
+                    System.out.println(i+" , "+j);
+                }
+            }
+        }
+    }
+
+    //Problem on Stringg
+
+    public static boolean checkPallindronee(int i, String str){
+        if (i>=str.length()/2) return true;
+            
+        if (str.charAt(i)!=str.charAt(str.length()-i-1)) return false;
+            
+        return checkPallindronee(i+1, str);
+            
+        
+        
+    }
+    public static void countvcwhiteSpace(String str){
+        int vowel= 0;
+        int consonent = 0;
+        int whiteSpace = 0;
+        String strr = str.toLowerCase();
+        for(int i =0; i<=strr.length()-1; i++){
+            char ch = strr.charAt(i);
+            if (ch=='a' || ch=='e'|| ch=='i'|| ch=='o'|| ch=='u') {
+                vowel++;
+            }else if (ch==' ') {
+                whiteSpace++;
+            }else{
+                consonent++;
+            }
+
+        }
+        System.out.println("vowelse are in string => "+ vowel +" white spaces are => "+ whiteSpace + "  consonent are =>"+ consonent);
+    }
+  
+    public static void findAsciiValue( char ch){
+        ch = 'A';
+        int ascii = ch;
+        System.out.println("The ascii value of this char is = > "+ ascii);
+    }
+
+    public static void removeVowels(String str){
+    
+       for(int i= 0; i<str.length(); i++){
+        char ch = str.charAt(i);
+        if (ch=='a' || ch=='e'|| ch=='i'|| ch=='o'|| ch=='u') {
+                continue;
+            }
+            System.out.print( ch);
+        }
+      // return str;
+       
+    }
+       
+    
+
+    public static void removeSpaces(String str){
+    for(int i= 0; i<str.length(); i++){
+        char ch = str.charAt(i);
+        if (ch==' ') {
+                continue;
+            }
+            System.out.print( ch);
+        }
+      // return str;
+       
+    }
+    
+    //IMPORTANT NOTE --> in beetwen 65 to 90 all in upperletter
+    // and in between 97 to 122 all lowercase letter comes in;
+
+  public static String removeCharacter(String str){
+    StringBuffer ans = new StringBuffer();
+    for(int i=0; i<str.length(); i++){
+        int ascii = (int)str.charAt(i);
+        if(ascii>=65 && ascii<=90 || ascii>=97 && ascii<=122){
+            ans.append(str.charAt(i));
+        }
+    }
+  return ans.toString();
+
+  }
+
+ 
+  public static String revrese(int i, int j,String st){
+  
+}
+
+    public static void main(String[] args) {
+        String str = "hello";
+    }
+}
+    //    removeVowels(str);
+    //    removeSpaces(str);
+        // String str = "India won the cricket match";
+        // countvcwhiteSpace(str);
+    //    int  nums[] = {3,4,5,6};
+    //    int  target = 7;
+    //    twoSum(nums, target);
+
+    //     int arr[] = {13,46,24,52,20,9};
+    //     mergeSort(arr, 0, arr.length-1);
+    //     //quickSort(arr, 0, arr.length-1);
+    //     //insertionSort(arr);
+    //    // selectioSort(arr);
+    //     for(int i =0; i<arr.length; i++){
+    //         System.out.print(arr[i]+" ");
+    //     }
         // int n = 74;
         // givenNumberIsPrime(n);
     //     int num1 = 5, den1 = 2, num2 = 1, den2  = 2, num3, den3;
@@ -772,5 +947,5 @@ public class solveProblem {
         // System.out.println("secound smallest = "+ secoundSmallest(arr));
         // System.out.println(secoundLargest(arr));
 
-    }
-}
+    
+
