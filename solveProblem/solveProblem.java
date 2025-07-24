@@ -549,130 +549,131 @@ public class solveProblem {
         return gcd(b, a % b);
     }
 
-    public static void harshadNumber(int n){
+    public static void harshadNumber(int n) {
         int sum = 0;
         int original = n;
-        while (n>0) {
-            int  lastdigit = n%10;
-            sum+=lastdigit;
-            n= n/10;
-            
+        while (n > 0) {
+            int lastdigit = n % 10;
+            sum += lastdigit;
+            n = n / 10;
+
         }
-        if (original%sum==0) {
+        if (original % sum == 0) {
             System.out.println("this is a harshad number => ");
-            
-        }else{
+
+        } else {
             System.out.println("this is not harshad number");
         }
     }
 
-    public static int suminRange(int a,int b){
-        int sum =0;
-        for(int i=a; i<=b; i++){
-            sum+=i;
+    public static int suminRange(int a, int b) {
+        int sum = 0;
+        for (int i = a; i <= b; i++) {
+            sum += i;
         }
-           return sum;
+        return sum;
     }
 
-   public static int gcdd(int a, int b){
-    if (b==0) {
-        return a;
-    }
-    return gcdd(b, a%b);
-   }
-
-   public static void simple(int num3,int den3){
-     int gcd = gcdd(num3, den3);
-     num3/=gcd;
-     den3/=gcd;
-   }
-   
-   public static int replaceWithXero(int n){
-    if (n==0) {
-        return 1;
-    }
-    int ans = 0, temp = 1;
-    while (n>0) {
-        int lastdigit = n%10;
-       if (lastdigit==0) {
-        lastdigit = 1;
-       }
-       ans = lastdigit*temp+ans;
-        n=n/10;
-        temp = temp*10;
-    }
-    return ans;
-   }
-
-   public static void givenNumberIsPrime(int n){
-    int sum = 0;
-    for(int i= 0; i<=n; i++){
-        if (checkPrime(i)) {
-            System.out.println(i);
-           sum+=i;
-          
-        }  
+    public static int gcdd(int a, int b) {
+        if (b == 0) {
+            return a;
         }
+        return gcdd(b, a % b);
     }
-   
-    public static void bubbleSort(int arr[]){
-        for(int turn=0; turn<arr.length-1; turn++){
-            for(int j=0; j<arr.length-1-turn; j++){
-              if (arr[j]>arr[j+1]) {
-                int temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
-                
-              }
+
+    public static void simple(int num3, int den3) {
+        int gcd = gcdd(num3, den3);
+        num3 /= gcd;
+        den3 /= gcd;
+    }
+
+    public static int replaceWithXero(int n) {
+        if (n == 0) {
+            return 1;
+        }
+        int ans = 0, temp = 1;
+        while (n > 0) {
+            int lastdigit = n % 10;
+            if (lastdigit == 0) {
+                lastdigit = 1;
+            }
+            ans = lastdigit * temp + ans;
+            n = n / 10;
+            temp = temp * 10;
+        }
+        return ans;
+    }
+
+    public static void givenNumberIsPrime(int n) {
+        int sum = 0;
+        for (int i = 0; i <= n; i++) {
+            if (checkPrime(i)) {
+                System.out.println(i);
+                sum += i;
+
             }
         }
     }
 
-    public static void selectioSort(int arr[]){
-        for(int i=0; i<arr.length; i++){
-            int minpos = i;
-            for(int j =i+1; j<arr.length; j++){
-                if (arr[minpos]>arr[j]) {
-                    minpos= j;
+    public static void bubbleSort(int arr[]) {
+        for (int turn = 0; turn < arr.length - 1; turn++) {
+            for (int j = 0; j < arr.length - 1 - turn; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+
                 }
             }
-            
+        }
+    }
+
+    public static void selectioSort(int arr[]) {
+        for (int i = 0; i < arr.length; i++) {
+            int minpos = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[minpos] > arr[j]) {
+                    minpos = j;
+                }
+            }
+
             int temp = arr[minpos];
             arr[minpos] = arr[i];
             arr[i] = temp;
         }
     }
-    
-    public static void insertionSort(int arr[]){
-        for(int i=0; i<arr.length; i++){
+
+    public static void insertionSort(int arr[]) {
+        for (int i = 0; i < arr.length; i++) {
             int curr = i;
             int prev = i - 1;
-            while (prev>=0 && arr[prev]>arr[curr]) {
-                arr[prev+1] = arr[prev];
+            while (prev >= 0 && arr[prev] > arr[curr]) {
+                arr[prev + 1] = arr[prev];
                 prev--;
             }
-            arr[prev+1] = arr[curr];
+            arr[prev + 1] = arr[curr];
         }
     }
 
-    public static void quickSort(int arr[], int si, int ei){
-        if(si>=ei){
-         return;
+    public static void quickSort(int arr[], int si, int ei) {
+        if (si >= ei) {
+            return;
         }
         int pidx = partition(arr, si, ei);
-        quickSort(arr, si, pidx-1);
-        quickSort(arr, pidx+1, ei);
+        quickSort(arr, si, pidx - 1);
+        quickSort(arr, pidx + 1, ei);
 
     }
-    public static int partition(int arr[], int si, int ei){
+
+    public static int partition(int arr[], int si, int ei) {
         int pivot = arr[ei];
-        int i = si-1; // to make place
-        for(int j = si;  j<ei; j++){
-            if (arr[j]<=pivot) {
+        int i = si - 1; // to make place
+        for (int j = si; j < ei; j++) {
+            if (arr[j] <= pivot) {
                 i++;
-                 int temp = arr[j];
-                 arr[j] = arr[i];
-                 arr[i] = temp;
+                int temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
             }
         }
         i++;
@@ -682,270 +683,343 @@ public class solveProblem {
         return i;
     }
 
-    public static void mergeSort(int arr[], int si, int ei){
-       if (si>=ei) {
-        return;
-        
-       }
-        int mid = si+(ei-si)/2;
+    public static void mergeSort(int arr[], int si, int ei) {
+        if (si >= ei) {
+            return;
+
+        }
+        int mid = si + (ei - si) / 2;
         mergeSort(arr, si, mid);
-        mergeSort(arr, mid+1, ei);
+        mergeSort(arr, mid + 1, ei);
         merge(arr, mid, si, ei);
     }
-    
-    public static void merge(int arr[], int mid,int si, int ei){
-        int temp[] = new int[ei-si+1];
-        int  i =si;
-        int j = mid+1;
-        int k = 0;
-        while (i<=mid && j<=ei) {
-            if (arr[i]<arr[j]) {
-                temp[k]  = arr[i];
-                i++;
-              
 
-            }else{
+    public static void merge(int arr[], int mid, int si, int ei) {
+        int temp[] = new int[ei - si + 1];
+        int i = si;
+        int j = mid + 1;
+        int k = 0;
+        while (i <= mid && j <= ei) {
+            if (arr[i] < arr[j]) {
+                temp[k] = arr[i];
+                i++;
+
+            } else {
                 temp[k] = arr[j];
                 j++;
-                
+
             }
             k++;
-            
+
         }
-        while (i<=mid) {
-            temp[k++] =arr[i++];
+        while (i <= mid) {
+            temp[k++] = arr[i++];
         }
-        while (j<=ei) {
+        while (j <= ei) {
             temp[k++] = arr[j++];
         }
-      for( k = 0,  i =si;  k<temp.length; k++, i++){
-       arr[i] = temp[k];
-      }
+        for (k = 0, i = si; k < temp.length; k++, i++) {
+            arr[i] = temp[k];
+        }
     }
-    public static void  twoSum(int arr[], int target){
-        for(int i =0; i<arr.length; i++){
-            for(int j= i+1; j<arr.length; j++){
-                if (arr[i]+arr[j]==target) {
-                    System.out.println(i+" , "+j);
+
+    public static void twoSum(int arr[], int target) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] + arr[j] == target) {
+                    System.out.println(i + " , " + j);
                 }
             }
         }
     }
 
-    //Problem on Stringg
+    // Problem on Stringg
 
-    public static boolean checkPallindronee(int i, String str){
-        if (i>=str.length()/2) return true;
-            
-        if (str.charAt(i)!=str.charAt(str.length()-i-1)) return false;
-            
-        return checkPallindronee(i+1, str);
-            
-        
-        
+    public static boolean checkPallindronee(int i, String str) {
+        if (i >= str.length() / 2)
+            return true;
+
+        if (str.charAt(i) != str.charAt(str.length() - i - 1))
+            return false;
+
+        return checkPallindronee(i + 1, str);
+
     }
-    public static void countvcwhiteSpace(String str){
-        int vowel= 0;
+
+    public static void countvcwhiteSpace(String str) {
+        int vowel = 0;
         int consonent = 0;
         int whiteSpace = 0;
         String strr = str.toLowerCase();
-        for(int i =0; i<=strr.length()-1; i++){
+        for (int i = 0; i <= strr.length() - 1; i++) {
             char ch = strr.charAt(i);
-            if (ch=='a' || ch=='e'|| ch=='i'|| ch=='o'|| ch=='u') {
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
                 vowel++;
-            }else if (ch==' ') {
+            } else if (ch == ' ') {
                 whiteSpace++;
-            }else{
+            } else {
                 consonent++;
             }
 
         }
-        System.out.println("vowelse are in string => "+ vowel +" white spaces are => "+ whiteSpace + "  consonent are =>"+ consonent);
+        System.out.println("vowelse are in string => " + vowel + " white spaces are => " + whiteSpace
+                + "  consonent are =>" + consonent);
     }
-  
-    public static void findAsciiValue( char ch){
+
+    public static void findAsciiValue(char ch) {
         ch = 'A';
         int ascii = ch;
-        System.out.println("The ascii value of this char is = > "+ ascii);
+        System.out.println("The ascii value of this char is = > " + ascii);
     }
 
-    public static void removeVowels(String str){
-    
-       for(int i= 0; i<str.length(); i++){
-        char ch = str.charAt(i);
-        if (ch=='a' || ch=='e'|| ch=='i'|| ch=='o'|| ch=='u') {
-                continue;
-            }
-            System.out.print( ch);
-        }
-      // return str;
-       
-    }
-       
-    
+    public static void removeVowels(String str) {
 
-    public static void removeSpaces(String str){
-    for(int i= 0; i<str.length(); i++){
-        char ch = str.charAt(i);
-        if (ch==' ') {
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
                 continue;
             }
-            System.out.print( ch);
+            System.out.print(ch);
         }
-      // return str;
-       
+        // return str;
+
     }
-    
-    //IMPORTANT NOTE --> in beetwen 65 to 90 all in upperletter
+
+    public static void removeSpaces(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch == ' ') {
+                continue;
+            }
+            System.out.print(ch);
+        }
+        // return str;
+
+    }
+
+    // IMPORTANT NOTE --> in beetwen 65 to 90 all in upperletter
     // and in between 97 to 122 all lowercase letter comes in;
 
-  public static String removeCharacter(String str){
-    StringBuffer ans = new StringBuffer();
-    for(int i=0; i<str.length(); i++){
-        int ascii = (int)str.charAt(i);
-        if(ascii>=65 && ascii<=90 || ascii>=97 && ascii<=122){
-            ans.append(str.charAt(i));
+    public static String removeCharacter(String str) {
+        StringBuffer ans = new StringBuffer();
+        for (int i = 0; i < str.length(); i++) {
+            int ascii = (int) str.charAt(i);
+            if (ascii >= 65 && ascii <= 90 || ascii >= 97 && ascii <= 122) {
+                ans.append(str.charAt(i));
+            }
+        }
+        return ans.toString();
+
+    }
+
+    public static String swap(String str, int i, int j) {
+        StringBuilder s = new StringBuilder(str);
+        s.setCharAt(i, str.charAt(j));
+        s.setCharAt(j, str.charAt(i));
+        return s.toString();
+    }
+
+    public static int sumOfNumberInString(String str) {
+        String tempsum = "0";
+        int sum = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char s = str.charAt(i);
+            if (Character.isDigit(s)) {
+                tempsum += s;
+            } else {
+                sum += Integer.parseInt(tempsum);
+                tempsum = "0";
+            }
+        }
+        return sum + Integer.parseInt(tempsum);
+    }
+
+    public static String capsFirstAndLast(String str, int size) {
+        StringBuffer sb = new StringBuffer(str);
+        for(int i=0; i<size; i++){
+            if(i==0 || i==(size-1)){
+                sb.setCharAt(i, Character.toUpperCase((char)(int)str.charAt(i)));
+            }else if (str.charAt(i)==' ') {
+                sb.setCharAt((i-1), Character.toUpperCase((char)(int)str.charAt(i-1)));
+                sb.setCharAt((i+1), Character.toUpperCase((char)(int)str.charAt(i+1)));
+            }
+        }
+        return sb.toString();
+    }
+
+    public static void calculateFrequency(String str){
+        int freq[] = new int[26];
+        for(int i=0; i<str.length(); i++){
+            freq[str.charAt(i)-'a']++;
+        }
+        for(int i=0; i<26; i++){
+            if (freq[i]!=0) {
+                System.out.print((char)(i+'a'));
+                System.out.print(freq[i]+" ");
+            }
         }
     }
-  return ans.toString();
+    public static int findNonRepeatt(String str){
+        int freq[] = new int[26];
+        char[] chars = str.toCharArray();
+        for(char c:chars){
+            freq[c-'a']++;
 
-  }
+        }
+        for(int i=0;i<chars.length; i++){
+            if (freq[chars[i]-'a']==1) {
+             return i;
+                
+            }
+        }
+       return -1;
 
- 
-  public static String revrese(int i, int j,String st){
-  
-}
-
-    public static void main(String[] args) {
-        String str = "hello";
-    }
-}
-    //    removeVowels(str);
-    //    removeSpaces(str);
-        // String str = "India won the cricket match";
-        // countvcwhiteSpace(str);
-    //    int  nums[] = {3,4,5,6};
-    //    int  target = 7;
-    //    twoSum(nums, target);
-
-    //     int arr[] = {13,46,24,52,20,9};
-    //     mergeSort(arr, 0, arr.length-1);
-    //     //quickSort(arr, 0, arr.length-1);
-    //     //insertionSort(arr);
-    //    // selectioSort(arr);
-    //     for(int i =0; i<arr.length; i++){
-    //         System.out.print(arr[i]+" ");
-    //     }
-        // int n = 74;
-        // givenNumberIsPrime(n);
-    //     int num1 = 5, den1 = 2, num2 = 1, den2  = 2, num3, den3;
        
-    //    int lcm = (den1*den2)/gcdd(den1, den2);
-    //    den3 =lcm;
-    //    num3 = num1*(den3/den1) + num2*(den3/den2);
-    //    System.out.println(num3+"/"+den3);
-        // int a = 5;
-        // int b= 9;
-        // System.out.println(suminRange(a, b));
-        // int a = 20;
-        // int b = 15;
-        // int ans = gcd(a, b);
-        // int lcm = (a * b) / ans;
-        // System.out.println(lcm);
-        // int n = 66;
-        // System.out.println(automorphicNumber(n));
-        // int ans = strongNumber(n);
-        // if (n == ans && n!=0) {
-        // System.out.println("is a Strong Number ");
-
-        // }else{
-        // System.out.println("it is not strong number");
-        // }
-
-        // System.out.println(power(2, 5));
-
-        // System.out.println(factorial(n));
-        // fibbonaci(n);
-        // System.out.println(fibbonaci(n));
-        // System.out.println(smallDigit(n));
-        // System.out.println(reverseNumber(n));
-        // leapYear(n);
-        // int a = 17, b =3, c= 5;
-        // greatestOfThree(a, b, c);
-        // float a =2;
-        // float r = 1.5f;
-        // int n = 4;
-        // System.out.println(gpSum(a, r, n));
-        // System.out.println(apSum(a, d, n));
-        // postiveOrNegative(n);
-        // evenOrOdd(n);
-        // perfectNumber(n);
-        // int min = 10;
-        // int max = 20;
-        // for(int i= min; i<max; i++){
-        // if (checkPrime(i)) {
-        // System.out.print(i+" ");
+    }
+    public static void main(String[] args) {
+        String str = "leetcode";
+        int size = str.length();
+        System.out.println(findNonRepeatt(str));
+        //calculateFrequency(str);
+       // System.out.println(capsFirstAndLast(str, size));
+       // System.out.println(sumOfNumberInString(str));
+        // String str = "Nishant Sharma";
+        // int i =0;
+        // int j = str.length()-1;
+        // while (i<j) {
+        // str = swap(str, i, j);
+        // i++;
+        // j--;
 
         // }
-        // }
-        // System.out.println(checkPrime(n));
-        // int min = 10;
-        // int max= 100;
-        // for(int i = min; i<max; i++){
-        // if (checkPallindrone(i)) {
-        // System.out.print(i+" ");
-        // }
-        // }
-        // int arr1[]={1,3,4,5,2};
-        // int arr2[]={2,4,3,1,7,5,15};
-        // int m = arr1.length;
-        // int n = arr2.length;
-        // boolean ans = arraySubset(arr1, arr2, m, n);
-        // if (ans==true) {
-        // System.out.println("arry is subset of another array");
+        // System.out.println(str);
+    }
 
-        // }else{
-        // System.out.println("array is not subset of another array");
-        // }
-        // int arr[] = {1,2,3,2,3,1,3,5,6};
-        // printFreq(arr);
-        // System.out.println(product(arr));
-        // symmetRicPair(arr);
-        // findNonRepeat(arr);
-        // repeatElement(arr);
-        // int key = 6;
-        // int pos = 4;
-        // int n = 5;
-        // addInBig(arr, key, n);
-        // addInLast(arr, key, n);
-        // addAtPos(arr, key, pos, n);
+}
 
-        // for(int i = 0; i<arr.length; i++){
-        // System.out.print(arr[i]+" ");
-        // }
-        // System.out.println();
-        // System.out.println(checkArrIsSorted(arr));
+// removeVowels(str);
+// removeSpaces(str);
+// String str = "India won the cricket match";
+// countvcwhiteSpace(str);
+// int nums[] = {3,4,5,6};
+// int target = 7;
+// twoSum(nums, target);
 
-        // System.out.println(average(arr));
-        // int k= 1;
-        // // leftRotation(arr, 2, 0, arr.length-1);
-        // rotates(arr, 2, 0, 0);
-        // for(int i= 0; i<arr.length; i++){
-        // System.out.print(arr[i]+" ");
-        // }
-        // System.out.println();
-        // System.out.println(calculateSum(arr));
-        // reArrange(arr);
-        // int arr[] = {10,10,2,2,3,3,4,5,5,5};
-        // countFreq(arr);
-        // int arr[] = {5,4,3,2,1,0};
-        // reverseArray(arr);
-        // for(int i= 0; i<arr.length; i++){
-        // System.out.print(arr[i]+" ");
-        // }
-        // System.out.println();
-        // System.out.println("secound smallest = "+ secoundSmallest(arr));
-        // System.out.println(secoundLargest(arr));
+// int arr[] = {13,46,24,52,20,9};
+// mergeSort(arr, 0, arr.length-1);
+// //quickSort(arr, 0, arr.length-1);
+// //insertionSort(arr);
+// // selectioSort(arr);
+// for(int i =0; i<arr.length; i++){
+// System.out.print(arr[i]+" ");
+// }
+// int n = 74;
+// givenNumberIsPrime(n);
+// int num1 = 5, den1 = 2, num2 = 1, den2 = 2, num3, den3;
 
-    
+// int lcm = (den1*den2)/gcdd(den1, den2);
+// den3 =lcm;
+// num3 = num1*(den3/den1) + num2*(den3/den2);
+// System.out.println(num3+"/"+den3);
+// int a = 5;
+// int b= 9;
+// System.out.println(suminRange(a, b));
+// int a = 20;
+// int b = 15;
+// int ans = gcd(a, b);
+// int lcm = (a * b) / ans;
+// System.out.println(lcm);
+// int n = 66;
+// System.out.println(automorphicNumber(n));
+// int ans = strongNumber(n);
+// if (n == ans && n!=0) {
+// System.out.println("is a Strong Number ");
 
+// }else{
+// System.out.println("it is not strong number");
+// }
+
+// System.out.println(power(2, 5));
+
+// System.out.println(factorial(n));
+// fibbonaci(n);
+// System.out.println(fibbonaci(n));
+// System.out.println(smallDigit(n));
+// System.out.println(reverseNumber(n));
+// leapYear(n);
+// int a = 17, b =3, c= 5;
+// greatestOfThree(a, b, c);
+// float a =2;
+// float r = 1.5f;
+// int n = 4;
+// System.out.println(gpSum(a, r, n));
+// System.out.println(apSum(a, d, n));
+// postiveOrNegative(n);
+// evenOrOdd(n);
+// perfectNumber(n);
+// int min = 10;
+// int max = 20;
+// for(int i= min; i<max; i++){
+// if (checkPrime(i)) {
+// System.out.print(i+" ");
+
+// }
+// }
+// System.out.println(checkPrime(n));
+// int min = 10;
+// int max= 100;
+// for(int i = min; i<max; i++){
+// if (checkPallindrone(i)) {
+// System.out.print(i+" ");
+// }
+// }
+// int arr1[]={1,3,4,5,2};
+// int arr2[]={2,4,3,1,7,5,15};
+// int m = arr1.length;
+// int n = arr2.length;
+// boolean ans = arraySubset(arr1, arr2, m, n);
+// if (ans==true) {
+// System.out.println("arry is subset of another array");
+
+// }else{
+// System.out.println("array is not subset of another array");
+// }
+// int arr[] = {1,2,3,2,3,1,3,5,6};
+// printFreq(arr);
+// System.out.println(product(arr));
+// symmetRicPair(arr);
+// findNonRepeat(arr);
+// repeatElement(arr);
+// int key = 6;
+// int pos = 4;
+// int n = 5;
+// addInBig(arr, key, n);
+// addInLast(arr, key, n);
+// addAtPos(arr, key, pos, n);
+
+// for(int i = 0; i<arr.length; i++){
+// System.out.print(arr[i]+" ");
+// }
+// System.out.println();
+// System.out.println(checkArrIsSorted(arr));
+
+// System.out.println(average(arr));
+// int k= 1;
+// // leftRotation(arr, 2, 0, arr.length-1);
+// rotates(arr, 2, 0, 0);
+// for(int i= 0; i<arr.length; i++){
+// System.out.print(arr[i]+" ");
+// }
+// System.out.println();
+// System.out.println(calculateSum(arr));
+// reArrange(arr);
+// int arr[] = {10,10,2,2,3,3,4,5,5,5};
+// countFreq(arr);
+// int arr[] = {5,4,3,2,1,0};
+// reverseArray(arr);
+// for(int i= 0; i<arr.length; i++){
+// System.out.print(arr[i]+" ");
+// }
+// System.out.println();
+// System.out.println("secound smallest = "+ secoundSmallest(arr));
+// System.out.println(secoundLargest(arr));
