@@ -876,10 +876,67 @@ public class solveProblem {
 
        
     }
+    public static void findNonRepeattt(String str){
+        int freq[] = new int[200];
+        char[] c = str.toCharArray();
+        for(int i=0; i<str.length(); i++){
+             freq[i] = 1;
+             for(int j= i+1; j<str.length(); j++){
+                if (c[i]==c[j]) {
+                    freq[i]++;
+                    c[j] = '-';
+                }
+             }
+        }
+        for(int i=0; i<str.length(); i++){
+            if (freq[i]==1 && c[i]!='-' && c[i]!=' ') {
+                System.out.println(c[i]+" ");
+                
+            }
+        }
+        
+    }
+
+    //This is final and best method to find non repeat element int String
+    public static void findNonRepeatttT(String str){
+        int freq[] = new int[200];
+        char s[] = str.toCharArray();
+        for(int i=0; i<str.length(); i++){
+              if (str.charAt(i)==' ') {
+                continue;
+                
+              }
+              else freq[(int)str.charAt(i)]++;
+        }
+        for(int i= 0; i<str.length(); i++){
+            if (freq[(int)str.charAt(i)]==1 && s[i]!=' ') {
+                System.out.println(s[i]+" ");
+            }
+        }
+    }
+// find maximum occurence char in String
+
+public static char maxOccurInString(String str){
+    int freq [] = new int[256];
+    for(int  i=0;i<str.length(); i++){
+        freq[str.charAt(i)]++;
+    }
+    int max = -1;
+    char c = ' ';
+    for(int i  = 0; i<str.length(); i++){
+        if (max<freq[str.charAt(i)]) {
+            max = freq[str.charAt(i)];
+            c = str.charAt(i);
+        }
+    }
+    return c;
+}
     public static void main(String[] args) {
-        String str = "leetcode";
-        int size = str.length();
-        System.out.println(findNonRepeatt(str));
+        String str = "apple";
+        System.out.println(maxOccurInString(str));
+        //findNonRepeatttT(str);
+        // int size = str.length();
+        // System.out.println(findNonRepeatt(str));
         //calculateFrequency(str);
        // System.out.println(capsFirstAndLast(str, size));
        // System.out.println(sumOfNumberInString(str));
