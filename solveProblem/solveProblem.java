@@ -931,9 +931,50 @@ public static char maxOccurInString(String str){
     }
     return c;
 }
+
+public static String removeAllDuplicate(String str){
+      String ans = " ";
+      for(int i =0;i<str.length(); i++){
+        int j= 0;
+        for( j= 0; j<i;  j++){
+            if (str.charAt(i)==str.charAt(j)) {
+                break;
+            }
+        }
+        if (i==j) {
+            ans+=str.charAt(i);
+        }
+      }
+      return ans;
+}
+
+public static void printAllDuplicate(String str){
+    int count[] = new int[256];
+    for(int i =0;i<str.length(); i++){
+        count[str.charAt(i)]++;
+    }
+    for(int i= 0;i<256; i++){
+        if (count[i]>1) {
+          System.out.println((char)i+"count " +count[i]);
+            
+        }
+    }
+}
+public static void changeeveryletterbyone(String str){
+    String result = " ";
+    char ch;
+    for(int i= 0; i<str.length(); i++){
+        ch = str.charAt(i);
+        result = result+ (char)(((int)ch)+1);
+    }
+    System.out.println(result);
+}
     public static void main(String[] args) {
-        String str = "apple";
-        System.out.println(maxOccurInString(str));
+        String str = "java";
+        changeeveryletterbyone(str);
+    // printAllDuplicate(str);
+       // System.out.println(removeAllDuplicate(str));
+       // System.out.println(maxOccurInString(str));
         //findNonRepeatttT(str);
         // int size = str.length();
         // System.out.println(findNonRepeatt(str));
