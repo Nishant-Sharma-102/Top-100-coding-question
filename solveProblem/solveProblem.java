@@ -931,7 +931,25 @@ public static char maxOccurInString(String str){
     }
     return c;
 }
+//This is best and final method
 
+public static char maxoccuernecee(String str){
+   int count[] = new int[256];
+   int max= -1;
+   char maxcar = '0';
+   for(int i=0; i<str.length(); i++){
+    count[str.charAt(i)]++;
+
+   }
+   for(int i=0; i<256; i++){
+    if (count[i]>max) {
+        max = count[i];
+        maxcar = (char)i;
+        
+    }
+   }
+   return maxcar;
+}
 public static String removeAllDuplicate(String str){
       String ans = " ";
       for(int i =0;i<str.length(); i++){
@@ -969,9 +987,115 @@ public static void changeeveryletterbyone(String str){
     }
     System.out.println(result);
 }
+
+public static String removecharfromfirst(String str , String ptr){
+    String  result = " ";
+    for(int i =0; i<str.length(); i++){
+        int count = 0;
+        for(int j = 0; j<ptr.length(); j++){
+            if (str.charAt(i)==ptr.charAt(j)) {
+                count++;
+                
+            }
+        }
+        if (count!=1) {
+            result+=str.charAt(i);
+        }
+    }
+    return result;
+}
+
+// Sort String imp question
+
+public static String sortingChar(String str){
+    char[]  arr = str.toCharArray();
+    for(int i= 0; i<str.length()-1; i++){
+        for(int j = 0; j<str.length()-i-1; j++){
+            if (arr[j]>arr[j+1]) {
+                char temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                
+            }
+        }
+    }
+    String ans = new String(arr);
+    return ans;
+}
+
+public static int countWords(String str){
+    int count = 1;
+    for(int i= 0;i<str.length(); i++){
+        if (str.charAt(i)==' ') {
+            count++;
+        }
+       
+        
+    }
+    return count;
+}
+public static String changeCase(String str){
+    StringBuffer ans = new StringBuffer();
+    for(int  i= 0; i<str.length(); i++){
+        int ascii = (int)str.charAt(i);
+
+        if (ascii>=65 && ascii<=90) 
+            ans.append((char)(ascii+32));
+            
+         else if (ascii>=97 && ascii<=122) 
+            ans.append((char)(ascii-32));
+
+        else if (str.charAt(i)==' ') 
+            ans.append(' ');
+        
+    }
+    return ans.toString();
+}
+public static void stringCOncat(String str, String ptr){
+    System.out.println(str+ptr);
+}
+
+public static int PositionSubstring(String str, String ptr){
+    for(int i= 0; i<str.length();i++){
+        int temp = i;
+        int j=0;
+        for(j=0; j<ptr.length(); j++){
+            if (str.charAt(temp)!=ptr.charAt(j)) {
+                break;
+            }
+            temp++;
+        }
+        if (j==ptr.length()) {
+           return i; 
+        }
+    }
+    return -1;
+
+}
+public static String reveseString(String str){
+    String[] word = str.split("+");
+    StringBuilder sb = new StringBuilder();
+    for(int i=word.length-1; i>=0; i--){
+        sb.append(word[i]);
+        sb.append(' ');
+    }
+    return sb.toString().trim();
+}
     public static void main(String[] args) {
-        String str = "java";
-        changeeveryletterbyone(str);
+        String str = "the sky is blue";
+        System.out.println(reveseString(str));
+    //    String str = "takeuforward";
+    //    String ptr = "forward";
+    //    System.out.println(PositionSubstring(str,ptr));
+    // stringCOncat(str, ptr);
+      //System.out.println(changeCase(str));
+        //System.out.println(countWords(str));
+        //System.out.println(sortingChar(str));
+    //     String str = "xyzpw";
+    //    String ptr = "lmno";
+    //     System.out.println(removecharfromfirst(str, ptr));
+      //  System.out.println(maxoccuernecee(str));
+        //changeeveryletterbyone(str);
     // printAllDuplicate(str);
        // System.out.println(removeAllDuplicate(str));
        // System.out.println(maxOccurInString(str));
