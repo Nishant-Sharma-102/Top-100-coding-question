@@ -70,9 +70,19 @@ public static int countNumbers(int a, int b, int c, int d, int e, String type) {
     }
     return sum;
    }
+
+   public static int countDigit(int N){
+    int count = 0;
+    while(N>0){
+      int lastdigit = N%10;
+      count++;
+      N= N/10;
+    }
+    return count;
+   }
     public static void main(String[] args) {
-      int N = 10;
-      System.out.println(primeInRange(N));  
+      int N = 10015;
+      System.out.println(countDigit(N));  
     }
 
 }
