@@ -9,7 +9,6 @@ public class cognizantImp {
         }
         return res;
     }
-
     public static int countMagicalRows(int arr[][]) {
         int count = 0;
         for (int i = 0; i < arr.length; i++) {
@@ -260,5 +259,184 @@ public class cognizantImp {
         }
         return count;
     }
-   
+    public static int secoundLargest(int arr[]){
+        int largest = Integer.MIN_VALUE;
+        int slargest = Integer.MIN_VALUE;
+        for(int i= 0; i<arr.length; i++){
+            if (arr[i]>largest) {
+                slargest = largest;
+                 largest = arr[i];
+            }else if (arr[i]>slargest && arr[i]!=largest) {
+                slargest = arr[i];
+            }
+        }
+        return slargest;
+    }
+
+    public static void mergedSortetwoarray(int arr1[], int n, int arr2[], int m, int arr3[] ){
+        int i=0, j=0;
+        int k = 0;
+        while (i<n && j<m) {
+            if (arr1[i]<arr2[j]) {
+                arr3[k++] = arr1[i++];
+               
+            }else{
+                arr3[k++] = arr2[j++];
+                
+            }
+
+            
+        }
+        while (i<n) {
+            arr3[k++] = arr1[i++];
+        }while (j<m) {
+             arr3[k++] = arr2[j++];
+        }
+    }
+
+    public static int reverse(int num){
+        int rev = 0;
+        while (num>0) {
+            int lastDigit = num%10;
+            rev = rev*10+lastDigit;
+            num = num/10;
+        }
+        return rev;
+
+    }
+    public static int countVowels(String str){
+        int count =0;
+        str = str.toLowerCase();
+        for(int i=0; i<str.length(); i++){
+            char ch = str.charAt(i);
+            if (ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u') {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static int Gcd(int a, int b){
+      if (b==0) {
+        return a;
+      }
+    return Gcd(b, a%b);
+    }
+
+    public static void gcdd(int a, int b){
+        while (a>0 && b>0) {
+            if (a>b) {
+                a = a%b;
+                
+            }else{
+                b = b%a;
+            }
+            if (a==0) {
+                System.out.println(b);
+            }else{
+                System.out.println(a);
+            }
+        }
+    }
+   public static int LCM(int a, int b){
+    return (a*b)/Gcd(a, b);
+   }
+
+   public static int fibbonaci(int num){
+    if (num==0 || num==1) {
+        return num;
+    }
+    return fibbonaci(num-1)+fibbonaci(num-2);
+   }
+
+   public static void bubbleSortt(int arr[]){
+    for(int i=0;i<arr.length-1; i++){
+        for(int j=0;j<arr.length-1-i; j++){
+            if (arr[j]>arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+   }
+
+   public static int binarySearch(int arr[],int target){
+    int left = 0;
+    int right = arr.length-1;
+    
+    while (left<=right) {
+        int mid = (left+right)/2;
+        if (arr[mid]==target) {
+           return mid;
+        }else if (arr[mid]<target) {
+            left = mid+1;
+        }else{
+            right = mid-1;
+        }
+        
+    }
+    return -1;
+   }
+
+   public static boolean chekPallinINString(String str){
+    int left = 0;
+    int right = str.length()-1;
+    while (left<=right) {
+        if (str.charAt(left)!=str.charAt(right)) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+        return true;
+   }
+
+public static String reveString(String str){
+        String reverse = " ";
+          for(int i=str.length()-1; i>=0; i--){
+            reverse+=str.charAt(i);
+          }
+          return reverse;
+}
+
+public static String ReverseSentences(String str){
+    String[] word = str.split(" ");
+    StringBuilder sb = new StringBuilder();
+    for(int i=word.length-1; i>=0;i--){
+         sb.append(word[i]);
+         sb.append(' ');
+    }
+    return sb.toString().trim();
+}
+    public static void main(String[] args) {
+        String str = "java is fun";
+       // System.out.println(reveString(str));
+        System.out.println(ReverseSentences(str));
+        //System.out.println(chekPallinINString(str));
+        // int[] arr = {3, 8, 12, 17, 25, 31, 42, 56, 73, 91};
+        // int target = 12;
+        // binarySearch(arr, target);
+        // bubbleSortt(arr);
+        // for(int i=0; i<arr.length; i++){
+        //     System.out.print(arr[i]+" ");
+        // }
+    //    int a = 12;
+    //    int b =18;
+    //    System.out.println(LCM(a, b));
+    //   System.out.println(Gcd(a, b));
+        // int num = 1234;
+        // System.out.println(reverse(num));
+//         int arr1[] = {1,2,3};
+//         int arr2[] = {4,5,6};
+//         int n= arr1.length;
+//         int m = arr2.length;
+//         int arr3[] = new int[n + m];
+
+//    mergedSortetwoarray(arr1, n, arr2, m, arr3);
+
+//     for(int i =0; i<arr3.length; i++){
+//         System.out.print(arr3[i]+" ");
+//     }
+}      
 }
