@@ -576,7 +576,7 @@ public class solveProblem {
 
     public static int gcdd(int a, int b) {
         if (b == 0) {
-            return a;
+          return a;
         }
         return gcdd(b, a % b);
     }
@@ -745,6 +745,20 @@ public class solveProblem {
         return checkPallindronee(i + 1, str);
 
     }
+
+    public static boolean chekPallinINString(String str){
+        int left= 0;
+        int right = str.length()-1;
+        while (left<=right) {
+            if (str.charAt(left)!=str.charAt(right)) {
+                return false;
+            }
+            
+            left++;
+            right--;
+        }
+        return true;
+ }
 
     public static void countvcwhiteSpace(String str) {
         int vowel = 0;
@@ -1096,9 +1110,22 @@ public static String reverChar(String str){
     }
     return  new String(ch);
 }
+
+public static int kadaneAlgo(int arr[]){
+    int sum = 0; 
+    int maxi = arr[0];
+    for(int i=0; i<arr.length; i++){
+        sum+=arr[i];
+        maxi = Math.max(maxi, sum);
+        if (sum<0) {
+            sum = 0;
+        }
+    }
+    return maxi;
+}
     public static void main(String[] args) {
-        String str = "hello";
-        System.out.println(reverChar(str));
+       int arr[] = {-2,1,-3,4,-1,2,1,-5,4};
+       System.out.println(kadaneAlgo(arr));
       //  System.out.println(reveseString(str));
     //    String str = "takeuforward";
     //    String ptr = "forward";
